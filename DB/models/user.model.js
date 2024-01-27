@@ -10,7 +10,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    username: {
+    userName: {
       type: String,
       required: true,
       unique: true,
@@ -47,6 +47,8 @@ const userSchema = new Schema(
       enum: ["online", "offline"],
       required: true,
     },
+    forgetCode: { type: String, unique: true },
+
   },
   { timestamps: true }
 );
