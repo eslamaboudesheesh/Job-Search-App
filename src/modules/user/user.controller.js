@@ -9,8 +9,10 @@ import randomstring from "randomstring";
 export const signup = async (req, res, next) => {
   const { firstName, lastName, userName, email, password, recoveryEmail, DOB, mobileNumber, role, status } =
     req.body;
+
   // hash password  8 or 10 to bes secure and good performance
   const hashPassword = bcryptjs.hashSync(password, 8);
+
   const user = await User.create({
     firstName, lastName,
     email,
@@ -23,6 +25,7 @@ export const signup = async (req, res, next) => {
     userName,
 
   });
+
   return res
     .status(StatusCodes.CREATED)
     .json({ success: true, message: "user add successfully  " });

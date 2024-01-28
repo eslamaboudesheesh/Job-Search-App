@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 import { connectDB } from "./DB/connection.js";
 import userRouter from "./src/modules/user/user.router.js"
+import companyRouter from "./src/modules/company/company.router.js"
 
 dotenv.config();
 const app = express();
@@ -11,6 +12,8 @@ app.use(express.json()); // parsing req.body
 await connectDB();
 // user router
 app.use("/user", userRouter);
+app.use("/company", companyRouter);
+
 
 app.all("*", (req, res, next) => {
     return next(new Error("page not found !"));

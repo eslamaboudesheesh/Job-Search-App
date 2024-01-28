@@ -32,7 +32,13 @@ const companySchema = new Schema(
             type: Types.ObjectId,
             ref: 'user',
             required: true
-        }
+        },
+        jobs: [
+            {
+                type: Types.ObjectId,
+                ref: "job",
+            },
+        ],
     },
     { timestamps: true }
 );
