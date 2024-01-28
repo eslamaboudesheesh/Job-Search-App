@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./DB/connection.js";
 import userRouter from "./src/modules/user/user.router.js"
 import companyRouter from "./src/modules/company/company.router.js"
+import jobRouter from "./src/modules/job/job.router.js"
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ await connectDB();
 // user router
 app.use("/user", userRouter);
 app.use("/company", companyRouter);
+app.use("/job", jobRouter);
 
 
 app.all("*", (req, res, next) => {

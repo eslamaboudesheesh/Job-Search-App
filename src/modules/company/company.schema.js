@@ -1,4 +1,5 @@
 import joi from "joi";
+import { isObjectID } from "../../middleware/validation.middleware.js";
 
 
 //schema for every api take data only
@@ -22,6 +23,6 @@ export const companyUpdateSchema = joi
     address: joi.string(),
     numberOfEmployees: joi.string(),
     industry: joi.string(),
-    companyId: joi.string()
+    companyId: joi.custom(isObjectID)
   }
   ).or('companyName', 'description', 'companyEmail', 'address', 'numberOfEmployees', 'industry').required()
