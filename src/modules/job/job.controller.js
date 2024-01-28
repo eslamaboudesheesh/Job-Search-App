@@ -111,7 +111,6 @@ export const getJobsWithFilters = async (req, res, next) => {
   if (technicalSkills) {
     filters.technicalSkills = { $in: technicalSkills.split(',') };
   }
-  console.log(filters)
   const jobs = await Job.find(filters);
   return res.status(StatusCodes.OK).json({ success: true, jobs });
 
@@ -123,7 +122,6 @@ export const getJobsWithFilters = async (req, res, next) => {
 export const applyToJob = async (req, res) => {
   const { jobId, userTechSkills, userSoftSkills } = req.body;
   const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
-  console.log(req.body)
   const application = await Application.create({
     jobId, userTechSkills, userSoftSkills, userResume: { secure_url, public_id }, userId: req.user._id
   });
